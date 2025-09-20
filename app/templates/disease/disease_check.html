@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+.disease-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #f9f9ff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+.disease-container h2 {
+  color: #2b5d34;
+  margin-bottom: 1rem;
+}
+.disease-container img {
+  width: 200px;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+.disease-container form {
+  margin-top: 1rem;
+  text-align: left;
+}
+.disease-container .form-control {
+  width: 100%;
+  padding: 0.6rem;
+  margin: 0.5rem 0 1rem 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.disease-container .btn {
+  background: #2b5d34;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.disease-container .btn:hover {
+  background: #238c4e;
+}
+.advice {
+  margin-top: 2rem;
+  text-align: left;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  border-left: 6px solid #2b5d34;
+}
+.advice h3 {
+  margin-top: 1rem;
+  color: #333;
+}
+</style>
+
+<div class="disease-container">
+  <h2>🐄 Disease Check,(Jee, mnyama wako ama mmea una ugonjwa?)</h2>
+  <img src="{{ url_for('static', filename='images/im2.jpeg') }}" alt="Animal health check">
+
+  <form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+
+    <label>{{ form.farm_type.label }}</label>
+    {{ form.farm_type(class="form-control") }}
+
+    <label>{{ form.image.label }}</label>
+    {{ form.image(class="form-control") }}
+
+    {{ form.submit(class="btn") }}
+  </form>
+
+  {% if eng %}
+  <div class="advice">
+    <h3>🐄 Advice (English)</h3>
+    <p>{{ eng|safe }}</p>
+
+    <h3>🌍 Advice (Swahili)</h3>
+    <p>{{ sw|safe }}</p>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

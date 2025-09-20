@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="stories-container">
+  <h2>🎥 Farmer Success Stories</h2>
+  <p>Watch inspiring stories and share your thoughts.</p>
+
+  <div class="video">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" 
+            frameborder="0" allowfullscreen></iframe>
+  </div>
+
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+      {{ form.comment.label }} {{ form.comment(class="form-control") }}
+    </div>
+    {{ form.submit(class="btn btn-secondary") }}
+  </form>
+</div>
+{% endblock %}

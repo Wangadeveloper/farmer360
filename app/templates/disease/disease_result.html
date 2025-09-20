@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Disease Analysis Result</h2>
+
+<h3>🐄 Advice (English)</h3>
+<p>{{ eng|safe }}</p>
+
+<h3>🌍 Advice (Swahili)</h3>
+<p>{{ sw|safe }}</p>
+
+<a href="{{ url_for('disease.disease_check') }}">🔙 Check Another</a>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>👋 Welcome, {{ current_user.username }}!</h2>
+    <p>Select an option below to get started, (Bonyeza chaguo lako):</p>
+
+    <div class="card">
+        <h3>Disease Check, (Pata kujua kinacho uguza mmea au mnyama wako )</h3>
+        <p>Upload images of livestock or crops to detect possible diseases and get treatment advice. (weka picha upate uhauri)</p>
+        <a href="{{ url_for('disease.disease_check') }}">Go to Disease Check (bonyeza hapa ilikupata ushauri)</a>
+    </div>
+
+    <div class="card">
+        <h3>Farm Records, (rekodi ya ukulima)</h3>
+        <p>Keep track of your livestock and crop data, monitor productivity, and generate reports. (weka rekodi yako ya ukulima)</p>
+        <a href="{{ url_for('records.records') }}">Manage Farm Records ,(bonyeza ilikuweka rekodi)</a>
+    </div>
+
+    <div class="card">
+        <h3>Financial Advisory (ushauri wa kujiendeleza kifedha)</h3>
+        <p>Get personalized financial advice, market strategies, and revenue projections.</p>
+        <a href="{{ url_for('finance.finance') }}">Access Finance Tools</a>
+    </div>
+
+    <div class="card">
+        <h3>Farm Chemicals (Kemikali)</h3>
+        <p>Upload images of farm chemicals to identify usage, risks, and safe alternatives. (jua kuhusu kemikali unayo tumia shambani)</p>
+        <a href="{{ url_for('chemicals.chemicals') }}">Check Chemicals</a>
+    </div>
+
+    <div class="card">
+        <h3>Success Stories (ushauri)</h3>
+        <p>Watch inspiring farmer success stories and share your own experiences.(ushauri kutoka kwa walio fanikiwa kwa ukulima tofauti tofauti)</p>
+        <a href="{{ url_for('stories.stories') }}">View Stories, (tazama)</a>
+    </div>
+</div>
+{% endblock %}

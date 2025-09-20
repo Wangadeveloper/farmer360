@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
+{% block content %}
+<h2 style="text-align:center; color:#2e7d32;">🌱 Welcome to <b>Mkulima Smart</b></h2>
+<p style="text-align:center;">Empowering farmers with AI-driven agriculture tools ,(Karibu Mkulima Smart!Msaidizi wako kwa maswala ya ukulima)</p>
+
+<div class="service-cards">
+    <div class="service-card">
+        <a href="{{ url_for('auth.login') }}">
+            <img src="{{ url_for('static', filename='images/im1.jpg') }}" alt="Disease Detection">
+            <p>Disease Detection, (Pata kujua kinacho uguza mmea au mnyama wako )</p>
+        </a>
+    </div>
+    <div class="service-card">
+        <a href="{{ url_for('auth.login') }}">
+            <img src="{{ url_for('static', filename='images/im2.jpeg') }}" alt="Farm Records">
+            <p>Farm Records, (weka rekodi yako ya ukulima)</p>
+        </a>
+    </div>
+    <div class="service-card">
+        <a href="{{ url_for('auth.login') }}">
+            <img src="{{ url_for('static', filename='images/im3.jpeg') }}" alt="Finance Advisory">
+            <p>Financial Advice, (pata ushauri wa jinsi ya kupata fedha kwa ukulima wako)</p>
+        </a>
+    </div>
+</div>
+{% endblock %}

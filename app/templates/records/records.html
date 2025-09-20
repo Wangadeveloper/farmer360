@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+.records-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem;
+  background: #fff4e6;
+  border-radius: 10px;
+  text-align: center;
+}
+.records-container img {
+  width: 180px;
+  margin-bottom: 1rem;
+}
+.records-container .form-group {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+</style>
+
+<div class="records-container">
+  <h2>📑 Farm Records (Rekodi ya Ukulima)</h2>
+  <img src="{{ url_for('static', filename='images/im1.jpg') }}" alt="Farm records illustration">
+  <p>Keep track of your crops and livestock records for better farm management.</p>
+
+  <form method="POST">
+    {{ form.hidden_tag() }}
+
+    <div class="form-group">
+      {{ form.farm_type.label }}  
+      {{ form.farm_type(class="form-control") }}
+    </div>
+
+    <div class="form-group">
+      {{ form.name.label }}  
+      {{ form.name(class="form-control") }}
+    </div>
+
+    <div class="form-group">
+      {{ form.quantity.label }}  
+      {{ form.quantity(class="form-control") }}
+    </div>
+
+    <div class="form-group">
+      {{ form.notes.label }}  
+      {{ form.notes(class="form-control", rows=3) }}
+    </div>
+
+    {{ form.submit(class="btn btn-info") }}
+  </form>
+</div>
+{% endblock %}

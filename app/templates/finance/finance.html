@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+.finance-container {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 2.5rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.finance-container img {
+  width: 180px;
+  margin-bottom: 1.5rem;
+}
+
+.finance-container h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+}
+
+.finance-container p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+label {
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
+  outline: none;
+}
+
+.btn-primary {
+  background: #28a745;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+  background: #218838;
+}
+</style>
+
+<div class="finance-container">
+  <h2>📊 Financial Advice</h2>
+  <p><em>Pata ushauri wa kifedha kwa ukulima wako</em></p>
+
+  <img src="{{ url_for('static', filename='images/im2.jpeg') }}" alt="Finance illustration">
+
+  <form method="POST">
+    {{ form.hidden_tag() }}
+
+    <div class="form-group">
+      {{ form.farm_type.label }}
+      {{ form.farm_type(class="form-control") }}
+    </div>
+
+    <div class="form-group">
+      {{ form.product.label }}
+      {{ form.product(class="form-control") }}
+    </div>
+
+    <div class="form-group">
+      {{ form.target_market.label }}
+      {{ form.target_market(class="form-control") }}
+    </div>
+
+    {{ form.submit(class="btn-primary") }}
+  </form>
+</div>
+{% endblock %}

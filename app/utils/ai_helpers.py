@@ -23,9 +23,17 @@ def generate_pdf(content: str, title: str = "AI Advice") -> BytesIO:
     return pdf_output
 
 
+
 # ✅ Configure Gemini safely inside request context
 def get_model(model_name="gemini-1.5-flash"):
-    genai.configure(api_key=current_app.config['GOOGLE_API_KEY'])
+    # Get API key from Flask config or fallback to environment variable
+    api_key = current_app.config.get("GOOGLE_API_KEY") or os.getenv("GOOGLE_API_KEY")
+
+    if not api_key:
+        raise RuntimeError("❌ GOOGLE_API_KEY is not set in environment variables or config")
+
+    genai.configure(api_key=api_key)
+
     generation_config = {
         "temperature": 0.3,
         "top_p": 0.95,
@@ -33,7 +41,9 @@ def get_model(model_name="gemini-1.5-flash"):
         "max_output_tokens": 8192,
         "response_mime_type": "text/plain",
     }
+
     return genai.GenerativeModel(model_name=model_name, generation_config=generation_config)
+
 
 # 🔹 Disease Analysis
 def get_disease_analysis(farm_type: str, image_path: str) -> BytesIO:

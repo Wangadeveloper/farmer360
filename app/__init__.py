@@ -5,8 +5,6 @@ import os
 def create_app():
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_object("config.Config")
-    # Load instance config (overrides defaults, contains secrets)
-    app.config.from_pyfile("config.py", silent=True)
 
     # Ensure upload folder exists
     os.makedirs(app.config.get("UPLOAD_FOLDER", "uploads"), exist_ok=True)

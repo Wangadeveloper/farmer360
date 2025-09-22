@@ -22,3 +22,4 @@ app/static/uploads/
 
 # Logs
 *.log
+*.env
